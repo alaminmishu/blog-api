@@ -29,7 +29,6 @@ class PostController extends Controller
     public function store(StorePostRequest $request): JsonResponse
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = 1;
 
         $post = Post::create($data);
