@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user')
+        $posts = Post::with('user', 'category', 'tags')
             ->latest()
             ->paginate(15);
         return PostResource::collection($posts);
@@ -43,7 +43,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return new PostResource($post->load('user'));
+        return new PostResource($post->load('user', 'category', 'tags'));
     }
 
     /**

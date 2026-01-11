@@ -22,6 +22,8 @@ class PostResource extends JsonResource
             'content' => $this->content,
             'status' => $this->status,
             'published_at' => $this->published_at?->toDateTimeString(),
+            'category' => new CategoryResource($this->whenLoaded('category')),
+            'tags' => TagResource::collection($this->whenLoaded('tags')),
             'created_at' => $this->created_at?->toDateTimeString(),
             'updated_at' => $this->updated_at?->toDateTimeString(),
         ];
