@@ -28,8 +28,10 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request): JsonResponse
     {
+        $this->authorize('create', Post::class);
+
         $data = $request->validated();
-        $data['user_id'] = 1;
+        $data['user_id'] = auth()->id();
 
         $post = Post::create($data);
 
@@ -51,6 +53,8 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post): PostResource
     {
+        $this->authorize('update', $post);
+
         $data = $request->validated();
         if (isset($data['title'])) {
             $data['slug'] = Str::slug($data['title']);
@@ -66,6 +70,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post): JsonResponse
     {
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return response()->json([

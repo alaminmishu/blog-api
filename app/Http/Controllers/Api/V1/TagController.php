@@ -29,6 +29,8 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request): JsonResponse
     {
+        $this->authorize('create', Tag::class);
+
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
@@ -52,6 +54,8 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag): TagResource
     {
+        $this->authorize('update', Tag::class);
+
         $data = $request->validated();
         if (isset($data['name'])) {
             $data['slug'] = Str::slug($data['name']);
@@ -67,6 +71,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag): JsonResponse
     {
+        $this->authorize('delete', $tag);
+
         $tag->delete();
 
         return response()->json([

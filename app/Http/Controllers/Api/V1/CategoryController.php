@@ -30,6 +30,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request): JsonResponse
     {
+        $this->authorize('create', Category::class);
+
         $data = $request->validated();
         $data['slug'] = Str::slug($data['name']);
 
@@ -53,6 +55,8 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category): CategoryResource
     {
+        $this->authorize('update', $category);
+
         $data = $request->validated();
         if (isset($data['name'])) {
             $data['slug'] = Str::slug($data['name']);
@@ -68,6 +72,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): JsonResponse
     {
+        $this->authorize('delete', $category);
+
         $category->delete();
 
         return response()->json([
