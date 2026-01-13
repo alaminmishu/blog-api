@@ -1,0 +1,158 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    laravel-bootcamp-xhgui-80-http:
+      entrypoints:
+        - http-8143
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-xhgui-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "laravel-bootcamp-redirectHttps"
+    laravel-bootcamp-phpmyadmin-80-http:
+      entrypoints:
+        - http-8036
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-phpmyadmin-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "laravel-bootcamp-redirectHttps"
+    laravel-bootcamp-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "laravel-bootcamp-redirectHttps"
+    laravel-bootcamp-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "laravel-bootcamp-redirectHttps"
+    laravel-bootcamp-web-5173-http:
+      entrypoints:
+        - http-5172
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-5173"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "laravel-bootcamp-redirectHttps"
+    
+    
+    laravel-bootcamp-xhgui-80-https:
+      entrypoints:
+        - http-8142
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-xhgui-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+    laravel-bootcamp-phpmyadmin-80-https:
+      entrypoints:
+        - http-8037
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-phpmyadmin-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+    
+    
+    laravel-bootcamp-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    laravel-bootcamp-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    laravel-bootcamp-web-5173-https:
+      entrypoints:
+        - http-5173
+      rule: HostRegexp(`^laravel-bootcamp\.ddev\.site$`)
+      
+      service: "laravel-bootcamp-web-5173"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    laravel-bootcamp-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    laravel-bootcamp-xhgui-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-laravel-bootcamp-xhgui:80
+        
+    
+    laravel-bootcamp-phpmyadmin-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-laravel-bootcamp-phpmyadmin:80
+        
+    
+    laravel-bootcamp-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-laravel-bootcamp-web:80
+        
+    laravel-bootcamp-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-laravel-bootcamp-web:8025
+        
+    laravel-bootcamp-web-5173:
+      loadbalancer:
+        servers:
+          - url: http://ddev-laravel-bootcamp-web:5173
+        
+    
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/laravel-bootcamp.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/laravel-bootcamp.key
