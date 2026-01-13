@@ -25,4 +25,17 @@ class UpdateTagRequest extends FormRequest
             'name' => 'sometimes|string|max:50',
         ];
     }
+
+    /**
+     * Get the body parameters for documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => 'The name of the tag.',
+                'example' => 'PHP',
+            ],
+        ];
+    }
 }

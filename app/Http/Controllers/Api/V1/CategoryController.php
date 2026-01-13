@@ -51,7 +51,16 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a category
+     *
+     * @urlParam category integer required The category ID. Example: 1
+     *
+     * @response 200 {
+     *   "data": {
+     *     "id": 1,
+     *     "name": "Updated Category"
+     *   }
+     * }
      */
     public function update(UpdateCategoryRequest $request, Category $category): CategoryResource
     {

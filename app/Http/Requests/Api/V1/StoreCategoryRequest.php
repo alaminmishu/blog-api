@@ -27,4 +27,25 @@ class StoreCategoryRequest extends FormRequest
             'parent_id' => 'nullable|exists:categories,id',
         ];
     }
+
+    /**
+     * Get the body parameters for documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => 'The name of the category.',
+                'example' => 'Technology',
+            ],
+            'description' => [
+                'description' => 'A description of the category (optional).',
+                'example' => 'Posts about technology and programming',
+            ],
+            'parent_id' => [
+                'description' => 'The parent category ID for nested categories (optional).',
+                'example' => null,
+            ],
+        ];
+    }
 }

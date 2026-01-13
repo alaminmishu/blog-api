@@ -25,4 +25,17 @@ class StoreTagRequest extends FormRequest
             'name' => 'required|string|max:50|unique:tags,name',
         ];
     }
+
+    /**
+     * Get the body parameters for documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'name' => [
+                'description' => 'The name of the tag.',
+                'example' => 'Laravel',
+            ],
+        ];
+    }
 }

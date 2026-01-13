@@ -26,4 +26,21 @@ class AttachTagsRequest extends FormRequest
             'tag_ids.*' => 'exists:tags,id',
         ];
     }
+
+    /**
+     * Get the body parameters for documentation.
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'tag_ids' => [
+                'description' => 'An array of tag IDs to attach/detach/sync.',
+                'example' => [1, 2, 3],
+            ],
+            'tag_ids.*' => [
+                'description' => 'A tag ID.',
+                'example' => 1,
+            ],
+        ];
+    }
 }

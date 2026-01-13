@@ -29,4 +29,35 @@ class StorePostRequest extends FormRequest
             'published_at' => 'nullable|date',
         ];
     }
+
+    /**
+     * Get the body parameters for the API documentation.
+     *
+     * @return array
+     */
+    public function bodyParameters(): array
+    {
+        return [
+            'title' => [
+                'description' => 'The title of the post.',
+                'example' => 'My First Blog Post',
+            ],
+            'excerpt' => [
+                'description' => 'A short excerpt of the post.',
+                'example' => 'This is a brief summary of my first blog post.',
+            ],
+            'content' => [
+                'description' => 'The main content of the post.',
+                'example' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+            ],
+            'status' => [
+                'description' => 'The publication status of the post.',
+                'example' => 'published',
+            ],
+            'published_at' => [
+                'description' => 'The date and time when the post was published.',
+                'example' => '2024-06-15 10:00:00',
+            ],
+        ];
+    }
 }

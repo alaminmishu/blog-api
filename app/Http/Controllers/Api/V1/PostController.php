@@ -13,7 +13,19 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Get all posts
+     *
+     * Retrieve a paginated list of all published posts.
+     *
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "title": "My Post",
+     *       "content": "Post content"
+     *     }
+     *   ]
+     * }
      */
     public function index()
     {
@@ -24,7 +36,20 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a post
+     *
+     * @authenticated
+     *
+     * @bodyParam title string required The post title. Example: My Blog Post
+     * @bodyParam content string required The post content.
+     * @bodyParam status string The post status. Example: published
+     *
+     * @response 201 {
+     *   "data": {
+     *     "id": 1,
+     *     "title": "My Blog Post"
+     *   }
+     * }
      */
     public function store(StorePostRequest $request): JsonResponse
     {
@@ -49,7 +74,17 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a post
+     *
+     * @urlParam post integer required The post ID. Example: 1
+     *
+     * @response 200 {
+     *   "data": {
+     *     "id": 1,
+     *     "title": "Updated Title",
+     *     "content": "Updated content"
+     *   }
+     * }
      */
     public function update(UpdatePostRequest $request, Post $post): PostResource
     {
