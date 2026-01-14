@@ -1,3 +1,6 @@
+[![Laravel CI](https://github.com/alaminmishu/blog-api/actions/workflows/ci.yml/badge.svg)](https://github.com/alaminmishu/blog-api/actions/workflows/ci.yml)
+
+
 # Blog API
 
 A production-ready RESTful API for a blogging platform built with Laravel 12.
